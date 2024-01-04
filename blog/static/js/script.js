@@ -24,3 +24,10 @@ modeSwitch.addEventListener("click" , () =>{
         
     }
 });
+
+
+$(document).ready(function() {
+    var numOfItems = $('.menu-links li').length;
+    $('.menu-links').css('--num-items', numOfItems);
+  });
+  
