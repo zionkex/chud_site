@@ -20,5 +20,6 @@ from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.first, name= 'first')
+    path('', views.first, name= 'first'),
+    path ('menutry/', views.menu, name ='second'),
 ]
