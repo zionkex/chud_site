@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -28,7 +27,7 @@ body {
     color: #fff;
 }
 
-body.dark {
+body.dark{
     --body-color: #18191a;
     --sidebar-color: #242526;
     --primary-color: #695CFE;
@@ -52,10 +51,9 @@ body.dark {
     z-index: 100;
 }
 .sidebar.close{
-    width: 88px;
+    width: 85px;
 }
 
-/* ===== Reusable code - Here ===== */
 .sidebar li{
     height: 40px;
     list-style: none;
@@ -153,6 +151,8 @@ header .image-text .profession{
 
 body.dark .sidebar header .toggle{
     color: var(--text-color);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
 }
 
 .sidebar.close .toggle{
@@ -282,24 +282,28 @@ body.dark .switch::before{
 .home {
     position: absolute;
     top: 0;
-    left: 250px;
+    left: px;
     height: 100vh;
-    width: calc(100% - 88px);
+    width: calc(100%);
     background-color: var(--body-color);
     transition: var(--tran-05);
     display: flex;
     justify-content: center;
     padding-top: 0vh;
-    margin-left: -180px;
+    margin-left: 0;
+    padding-right: 0px;
 }
-.home .text{
+.home .text {
     text-align: center;
     font-size: 30px;
     font-weight: 500;
     color: black;
+    width: 100%; /* Add this property */
+    margin: 0 auto; /* Center the content */
+    padding: 0;
 }
 .head {
-    width: calc(100% - 88px);
+    width: calc(100%);
     height: 13%;
     
 }
