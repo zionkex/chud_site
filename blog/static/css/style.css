@@ -11,15 +11,15 @@
     --sidebar-color: #FFF;
     --primary-color: #695CFE;
     --text-color: #000000;
-    --tran-03: all 0.2s ease;
-    --tran-04: all 0.3s ease;
+    /* --tran-03: all 0.2s ease;
+    --tran-04: all 0.3s ease; */
     --tran-05: all 0.3s ease;
 }
 
 body {
     min-height: 100vh;
     background-image: linear-gradient(to right, #EA8D8D, #A890FE);
-    transition: var(--tran-05);
+    
 }
 
 ::selection{
@@ -46,7 +46,7 @@ body.dark{
     height: 100%;
     width: 280px;
     padding: 10px 14px;
-    background-color: transparent; /* Changed to transparent */
+    background-color: transparent;
     transition: var(--tran-05);
     z-index: 100;
 }
@@ -81,20 +81,15 @@ body.dark{
 .sidebar .text,
 .sidebar .icon{
     color: var(--text-color);
-    transition: var(--tran-03);
+    /* transition: var(--tran-03); */
 }
 
 .sidebar .text{
-    font-size: 17px;
+    font-size: 17px;    
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
-    opacity: 0;
-}
-/* =========================== */
-
 .sidebar header{
     position: relative;
 }
@@ -106,6 +101,9 @@ body.dark{
 .sidebar header .logo-text{
     display: flex;
     flex-direction: column;
+}
+.sidebar.close header .logo-text{
+    display: none;
 }
 header .image-text .name {
     margin-top: 2px;
@@ -145,7 +143,7 @@ header .image-text .profession{
     justify-content: center;
     font-size: 22px;
     cursor: pointer;
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
     padding-top: 2px;
 }
 
@@ -167,7 +165,7 @@ body.dark .sidebar header .toggle{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
 }
 
 .sidebar li.search-box input{
@@ -180,7 +178,7 @@ body.dark .sidebar header .toggle{
     border-radius: 6px;
     font-size: 17px;
     font-weight: 500;
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
 }
 .sidebar li a{
     list-style: none;
@@ -192,7 +190,7 @@ body.dark .sidebar header .toggle{
     width: 100%;
     border-radius: 6px;
     text-decoration: none;
-    transition: var(--tran-03);
+    /* transition: var(--tran-03); */
 }
 
 .sidebar li a:hover{
@@ -221,7 +219,7 @@ body.dark .sidebar li a:hover .text{
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
 }
 
 .menu-bar .mode .sun-moon{
@@ -255,30 +253,32 @@ body.dark .mode .sun-moon i.moon{
 }
 .toggle-switch .switch{
     position: relative;
-    height: 22px;
-    width: 40px;
+    height: 28px;
+    width: 45px;
     border-radius: 25px;
     background-color: #DDD;
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
 }
 
 .switch::before{
     content: '';
     position: absolute;
-    height: 15px;
-    width: 15px;
+    height: 17px;
+    width: 17px;
     border-radius: 50%;
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
     background-color: var(--sidebar-color);
-    transition: var(--tran-04);
+    /* transition: var(--tran-04); */
 }
 
 body.dark .switch::before{
     left: 20px;
 }
-
+.sidebar.close .mode .mode-text {
+    display: none;
+}
 .home {
     position: absolute;
     top: 0;
@@ -286,7 +286,7 @@ body.dark .switch::before{
     height: 100vh;
     width: calc(100%);
     background-color: var(--body-color);
-    transition: var(--tran-05);
+    /* transition: var(--tran-05); */
     display: flex;
     justify-content: center;
     padding-top: 0vh;
@@ -316,4 +316,46 @@ body.dark .sidebar {
 }
 body.dark .head .text h2 {
     color: #FFF; /* Set the text color to white */
+}
+
+a {
+    font-size: 32px;
+    color: #695cfe;
+    position: relative;
+    text-decoration: none;
+}
+
+a::before {
+    content: ""; /* Added 'content' property */
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ff0000;
+    bottom: 0;
+    left: 0;
+    transform-origin: right; /* Added a colon */
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+a:hover::before {
+    transform: scaleX(1);
+}
+
+.sidebar.close .nav-link .text.nav-text {
+    position: absolute;
+    left: 100%;
+    color: #000000; /* Text color */
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 999;
+    opacity: 0;
+}
+
+.sidebar.close .nav-link:hover .text.nav-text {
+    display: block; /* Display text on hover */
+    opacity: 1;
+}
+.dark .sidebar.close .nav-link:hover .text.nav-text {
+    color: #FFF;
 }
