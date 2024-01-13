@@ -17,11 +17,19 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 400vh;
     background-image: linear-gradient(to right, #EA8D8D, #A890FE);
     
 }
-
+.progress__line {
+    display: none;
+    height: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: red;
+    width: 0;
+}
 ::selection{
     background-color: var(--primary-color);
     color: #fff;
@@ -330,7 +338,7 @@ body.dark .head .text h2 {
 }
 
 .sidebar.close .nav-link:hover .text.nav-text {
-    display: block; /* Display text on hover */
+    display: block; 
     opacity: 1;
 }
 .dark .sidebar.close .nav-link:hover .text.nav-text {
