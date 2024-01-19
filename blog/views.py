@@ -8,4 +8,6 @@ def menu (request):
 
 def post_list(request):
     posts = PhotoPost.published.all()
-    return render(request, 'blog/posts.html', {'posts': posts})
+    options= Menu.objects.all()
+    context = {"options":options,'posts': posts }
+    return render(request, 'blog/posts.html', context)
