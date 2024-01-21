@@ -43,7 +43,6 @@ class PhotoPost(models.Model):
         return self.title
     def save(self, *args, **kwargs):
         if not self.slug:
-            # Generate the slug based on the title using slugify
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
