@@ -367,7 +367,6 @@ body.dark .head .text h2 {
     background-color: #fff; 
     padding: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
     margin-left: 10px;
     margin-right: 50px;
 }
