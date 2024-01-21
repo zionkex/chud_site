@@ -11,3 +11,7 @@ def post_list(request):
     options= Menu.objects.all()
     context = {"options":options,'posts': posts }
     return render(request, 'blog/posts.html', context)
+
+def photo_post_list(request):
+    posts = PhotoPost.objects.all()
+    return render(request, 'blog/photo_post.html', {'posts': posts})
