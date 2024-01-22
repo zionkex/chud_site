@@ -41,6 +41,7 @@ body.dark {
     left: 0;
     background-color: red;
     width: 0;
+    z-index: 10;
 }
 
 ::selection {
@@ -61,7 +62,7 @@ body.dark {
     /* position: absolute; */
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 0;
     height: 100%;
 }
 
@@ -369,17 +370,17 @@ body.dark .head .text h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 10px;
     margin-right: 50px;
-    height: auto
+    align-items: center;
 }
 
 .post-images {
     padding-right: 10px;
     width: 300px;
     text-align: center;
-
+    align-items: center;
 }
 .post-text {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     padding: 10px;
     display: flex;
     flex-direction: column;

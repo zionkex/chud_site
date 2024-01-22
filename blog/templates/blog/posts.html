@@ -6,7 +6,7 @@
     <div class="post-content">
       <div class="post-images">
         {% for image in post.images.all %}
-          <img src="{{ image.image.url }}" alt="{{ image.title }}">
+          <img src="{{ image.image.url }}" width="100%" alt="{{ image.title }}">
         {% endfor %}
       </div>
       <div class="post-text">
