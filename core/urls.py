@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.menu, name='first'),
     path('posts/', views.post_list),
     path('photo-posts/', views.photo_post_list, name='photo_post_list'),
+    path('files/', views.upload_file, name='upload_file')
 
 ]
 

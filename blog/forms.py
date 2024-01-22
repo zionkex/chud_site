@@ -1,5 +1,6 @@
 from django import forms
-from .models import PhotoPost
+from .models import PhotoPost, Fileupload
+
 
 class PhotoPostForm(forms.ModelForm):
     class Meta:
@@ -8,3 +9,9 @@ class PhotoPostForm(forms.ModelForm):
         widgets = {
             'images': forms.CheckboxSelectMultiple(),
         }
+
+
+class FileuploadForm(forms.ModelForm):
+    class Meta:
+        model = Fileupload
+        fields = ['title', 'file']

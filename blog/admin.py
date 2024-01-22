@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, PhotoPost, Image
+from .models import Menu, PhotoPost, Image, Fileupload
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
@@ -15,3 +15,7 @@ class PhotoPostAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('title','image')
+
+@admin.register(Fileupload)
+class FileuploadAdmin(admin.ModelAdmin):
+    list_display = ('title','slug','file')
