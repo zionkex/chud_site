@@ -25,10 +25,9 @@ urlpatterns = [
     path('', views.menu, name='first'),
     path('posts/', views.post_list),
     path('photo-posts/', views.photo_post_list, name='photo_post_list'),
-    path('files/', views.upload_file, name='upload_file')
-
+    path('file/', views.upload_file, name='upload_file'),
+    path ('files/<slug:slug>/', views.open_pdf, name='view_pdf'),
+    path('upload/', views.upload_file),
 ]
-
-# Serving static files during development
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

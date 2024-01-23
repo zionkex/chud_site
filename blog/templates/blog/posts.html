@@ -5,9 +5,9 @@
   {% for post in posts %}
     <div class="post-content">
       <div class="post-images">
-        {% for image in post.images.all %}
+        {% if image %}
           <img src="{{ image.image.url }}" width="100%" alt="{{ image.title }}">
-        {% endfor %}
+        {% endif %}
       </div>
       <div class="post-text">
         <h2>{{ post.title }}</h2>

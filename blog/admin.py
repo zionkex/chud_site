@@ -18,4 +18,5 @@ class ImageAdmin(admin.ModelAdmin):
 
 @admin.register(Fileupload)
 class FileuploadAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
     list_display = ('title','slug','file')
