@@ -17,18 +17,19 @@ class Menu(models.Model):
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset()\
-                      .filter(status=PhotoPost.Status.PUBLISHED)
-class PhotoPost(models.Model):
+                      .filter(status=Post.Status.PUBLISHED)
+    
+
+class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=250,
+    slug = models.SlugField(default = 'none' , max_length=250,
                             unique_for_date='publish')
     publish = models.DateTimeField(default=timezone.now)
     body = models.TextField()
-    images = models.ManyToManyField('Image', related_name='photo_posts')
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
     objects = models.Manager()
     published = PublishedManager()
@@ -45,13 +46,27 @@ class PhotoPost(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        
+# class Post(models.Model):
+#     title = models.CharField(max_length=100)
+#     body = models.TextField()
+#     publish = models.DateTimeField(default=timezone.now)
+#     def __str__(self):
+#         return self.title
+#     class Meta:
+#         ordering = ['-publish']
+#         indexes = [
+#             models.Index(fields=['-publish']),
+#         ]
+
 
 class Image(models.Model):
-    title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='photo_post_images/')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='post_images/')
 
     def __str__(self):
-        return self.title
+        return f"Image for {self.post.title}"
+ 
 
 
 class Fileupload(models.Model):
