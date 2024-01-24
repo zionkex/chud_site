@@ -1,20 +1,20 @@
 from django.contrib import admin
-from .models import Menu, PhotoPost, Image, Fileupload
+from .models import Menu, Post, Image, Fileupload
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
     list_display = ['title', 'icon', 'priority']
 
-@admin.register(PhotoPost)
-class PhotoPostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'publish', 'body', 'status']
-    list_filter = ['status', 'publish']
-    prepopulated_fields = {'slug': ('title',)}
-    date_hierarchy = 'publish'
+class ImageInline(admin.TabularInline):
+    model = Image
+    extra = 3  # Number of empty image forms to show in the admin
 
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ('title','image')
+class PostAdmin(admin.ModelAdmin):
+    inlines = [ImageInline]
+    list_display = ('title',)
+    search_fields = ['title']
+
+admin.site.register(Post, PostAdmin)
 
 @admin.register(Fileupload)
 class FileuploadAdmin(admin.ModelAdmin):

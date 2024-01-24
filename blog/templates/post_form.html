@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новый пост</title>
+</head>
+<body>
+  <h2>Створити пост</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <p>{{ form.title.errors }}
+    <label for="{{ form.title.id_for_label }}">Заголовок:</label>
+    {{ form.title }}</p>
+    
+    <p>{{ form.body.errors }}
+    <label for="{{ form.body.id_for_label }}">Текст:</label>
+    {{ form.body }}</p>
+    
+    <p>{{ form.main_image.errors }}
+    <label for="{{ form.main_image.id_for_label }}">Основне зображення:</label>
+    {{ form.main_image }}</p>
+    
+    <p>{{ form.images.errors }}
+    <label for="{{ form.images.id_for_label }}">Зображення:</label>
+    {{ form.images }}</p>
+    
+    <button type="submit">Відправити</button>
+  </form>
+</body>
+</html>

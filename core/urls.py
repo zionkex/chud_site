@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.menu, name='first'),
     path('posts/', views.post_list),
-    path('photo-posts/', views.photo_post_list, name='photo_post_list'),
+    path('create_post/', views.PostFormView.as_view(), name='create_post'),
+    path('home/', views.home ),
     path('files/', views.upload_file, name='upload_file')
 
 ]
