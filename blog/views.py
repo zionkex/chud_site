@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse
-from django.shortcuts import render
+from .models import Post, Image, Menu
+from .forms import FileuploadForm,PostForm
 from django.views.generic.edit import FormView
 from .forms import PostForm,FileuploadForm
-from .models import Post, Image, Menu
+
 # Create your views here.
 
 def menu(request):
@@ -43,6 +44,7 @@ def home(request):
 def post_list(request):
     posts = Post.published.all()
     options = Menu.objects.all()
+
     context = {"options": options, 'posts': posts}
     return render(request, 'blog/posts.html', context)
 
@@ -57,3 +59,8 @@ def upload_file(request):
         form = FileuploadForm()
     context = {'form': form, }
     return render(request, 'blog/upload.html', context)
+
+
+def photo_post_list(request):
+    posts = Post.objects.all()
+    return render(request, 'blog/photo_post.html', {'posts': posts})

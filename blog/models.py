@@ -72,11 +72,15 @@ class Image(models.Model):
 class Fileupload(models.Model):
     title = models.CharField(max_length=255)
     slug= models.SlugField(max_length=250)
-    file = models.FileField(upload_to='documents/')
+    file = models.FileField(upload_to='pdf_documents/')
 
     def __str__(self):
         return self.title
+    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+
+        
