@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Главная страница</h2>
+    {% for post in posts %}
+        <div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+            
+            {% if post.images.first %}
+                <img src="{{ post.images.first.image.url }}" alt="Image for {{ post.title }}">
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
