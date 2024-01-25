@@ -26,8 +26,8 @@ urlpatterns = [
     path('posts/', views.post_list),
     path('create_post/', views.PostFormView.as_view(), name='create_post'),
     path('home/', views.home ),
-    path('file/', views.upload_file, name='upload_file'),
     path('upload/', views.upload_file),
+    path ('files/<slug:slug>/', views.open_pdf, name='view_pdf'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
