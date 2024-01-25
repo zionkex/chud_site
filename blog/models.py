@@ -26,8 +26,7 @@ class Post(models.Model):
         PUBLISHED = 'PB', 'Published'
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField(default = 'none' , max_length=250,
-                            unique_for_date='publish')
+    slug = models.SlugField(max_length=250, blank=True, null=True, unique_for_date='publish')
     publish = models.DateTimeField(default=timezone.now)
     body = models.TextField()
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)

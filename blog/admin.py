@@ -13,6 +13,7 @@ class PostAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
     list_display = ('title',)
     search_fields = ['title']
+    prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Post, PostAdmin)
 
