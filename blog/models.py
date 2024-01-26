@@ -50,11 +50,15 @@ class Post(models.Model):
     #     return super().save(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            # Use unidecode to transliterate Unicode characters to ASCII
-            transliterated_title = unidecode(self.title)
-            self.slug = slugify(unidecode(self.title))
-        return super().save(*args, **kwargs)
+        # Use unidecode to transliterate Unicode characters to ASCII
+        transliterated_title = unidecode(self.title)
+        new_slug = slugify(transliterated_title)
+
+        if self.slug != new_slug:
+            # Title has changed, update the slug
+            self.slug = new_slug
+
+        super().save(*args, **kwargs)
 class Image(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='post_images/')
