@@ -44,13 +44,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(self.title)
-    #     return super().save(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        # Use unidecode to transliterate Unicode characters to ASCII
         transliterated_title = unidecode(self.title)
         new_slug = slugify(transliterated_title)
 

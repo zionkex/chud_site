@@ -1,5 +1,5 @@
 from django import forms
-from .models import Fileupload
+from .models import Fileupload,Post
 
 
 class MultipleFileInput(forms.ClearableFileInput):
@@ -19,17 +19,18 @@ class MultipleFileField(forms.FileField):
         return result
 
 class PostForm(forms.Form):
+    
     title = forms.CharField(max_length=100)
     body = forms.CharField(widget=forms.Textarea)
     main_image = forms.ImageField(required=False)
-    images = MultipleFileField()
+    images = MultipleFileField(required = False)
 
     def clean(self):
         cleaned_data = super().clean()
         main_image = cleaned_data.get('main_image')
         images = cleaned_data.get('images')
-
         return cleaned_data
+    
 
 class FileuploadForm(forms.ModelForm):
     class Meta:

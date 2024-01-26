@@ -22,7 +22,6 @@ class PostFormView(FormView):
         body = form.cleaned_data['body']
         main_image = form.cleaned_data['main_image']
         images = form.cleaned_data['images']
-
         post = Post.objects.create(title=title, body=body)
 
         if main_image:
