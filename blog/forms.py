@@ -34,6 +34,7 @@ class PostForm(forms.Form):
 
         return cleaned_data
 
+
 class FileuploadForm(forms.ModelForm):
     class Meta:
         model = Fileupload
