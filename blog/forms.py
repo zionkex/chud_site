@@ -23,7 +23,7 @@ class MultipleFileField(forms.FileField):
 class PostForm(forms.Form):
     title = forms.CharField(max_length=100)
     body = forms.CharField(widget=forms.Textarea)
-    author = forms.CharField(max_length=100)
+    author = forms.CharField(max_length=50)
     main_image = forms.ImageField(required=False)
     images = MultipleFileField(required=False)
 
