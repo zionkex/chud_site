@@ -14,7 +14,7 @@
 }
 
 body {
-    min-height: 400vh;
+    min-height: 100vh;
     background-image: linear-gradient(to right, #EA8D8D, #A890FE);
     transition: background-color var(--tran-05);
     background-color: var(--body-color)
@@ -181,9 +181,7 @@ body.dark .sidebar header .toggle {
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu {
-    margin-top: 40px;
-}
+
 
 .sidebar li.search-box {
     border-radius: 6px;
@@ -209,7 +207,6 @@ body.dark .sidebar header .toggle {
     background-color: transparent;
     display: flex;
     align-items: center;
-    height: 100%;
     width: 100%;
     border-radius: 6px;
     text-decoration: none;
@@ -321,7 +318,7 @@ body.dark .switch::before {
     padding: 0;
 }
 
-.head { 
+.head {
     width: calc(100%);
 }
 
@@ -364,9 +361,9 @@ body.dark .head .text h2 {
 
 .post-content {
     display: flex;
-    margin-top: 30px; 
-    background-color: #fff; 
-    padding: 20px; 
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 10px;
     margin-right: 50px;
@@ -388,12 +385,102 @@ body.dark .head .text h2 {
     line-height: 1.5;
 }
 /* @media (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-    }
+Add styles for the form */
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-    .sidebar {
-        width: 100%;
-        height: auto;
-    }
-} */
+form {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(244, 244, 244, 0.2);
+  border-radius: 20px;
+  line-height: 1.5em;
+  text-align: center;
+    margin: auto;
+}
+.form-header{
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+textarea,
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+    margin-top: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+    background-color: #f4f4f4;
+    border-style: none;
+}
+
+input[type="file"] {
+    margin-top: 20px;
+    width: 60%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+    color: #0f0f0f;
+}
+label {
+    font-size:18px;
+    color: #0f0f0f;
+}
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.4;
+
+}
+textarea {
+    margin-top: 20px;
+    background-color: white;
+    height: 150px;
+    font-size: 16px;
+}
+input::placeholder,
+textarea::placeholder {
+  font-size: 100%;
+}
+
+.form-image {
+  text-align: center;
+}
+body.dark .form-header {
+    background-color: #695cfe;
+    margin: -20px -20px 0 -20px;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 0;
+    color: white;
+}
+
+body.dark label{
+    color: white;
+}
+body.dark button {
+    background-color: #695cfe;
+}
+body.dark input[type="file"] {
+    color: white;
+}
+body.dark .als{
+    padding-left: 40px;
+}
+body.dark input[type="text"], body.dark textarea{
+    background-color: #282626;
+    color: white;
+}
+body.dark input::placeholder,
+body.dark textarea::placeholder{
+    color: white;
+}
