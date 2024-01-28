@@ -15,40 +15,41 @@ def menu(request):
 
 
 class PostFormView(FormView):
-    template_name = "blog/post/post_form.html"
+    template_name = "post_form.html"
     form_class = PostForm
     success_url = "/success/"  # Adjust the success URL as needed
 
-def form_valid(self, form):
-    title = form.cleaned_data['title']
-    body = form.cleaned_data['body']
-    author_name = form.cleaned_data['author']
-    main_image = form.cleaned_data['main_image']
-    images = form.cleaned_data['images']
-    author = User.objects.get(username=author_name)
+    def form_valid(self, form):
+        title = form.cleaned_data['title']
+        body = form.cleaned_data['body']
+        author_name = form.cleaned_data['author']
+        main_image = form.cleaned_data['main_image']
+        images = form.cleaned_data['images']
+        author = User.objects.get(username=author_name)
 
-    post = Post.objects.create(title=title, body=body, status=Post.Status.PUBLISHED, author=author)
+        post = Post.objects.create(title=title, body=body, status=Post.Status.PUBLISHED, author=author)
 
-    if main_image:
-        Image.objects.create(post=post, image=main_image)
-    for image in images:
-        if image != main_image:
-            Image.objects.create(post=post, image=image)
+        if main_image:
+            Image.objects.create(post=post, image=main_image)
+        for image in images:
+            if image != main_image:
+                Image.objects.create(post=post, image=image)
 
-    return super().form_valid(form)
+        return super().form_valid(form)
 
 def post_list(request):
     posts = Post.published.all()
     options = Menu.objects.all()
 
     context = {"options": options, 'posts': posts}
-    return render(request, 'blog/posts.html', context)
+    return render(request, 'blog/post/posts.html', context)
 
-def post_detail(request,slug):
-    post = get_object_or_404(Post, slug=slug,status=Post.Status.PUBLISHED)
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug, status=Post.Status.PUBLISHED)
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
+
 def upload_file(request):
     if request.method == 'POST':
         form = FileuploadForm(request.POST, request.FILES)
