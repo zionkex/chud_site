@@ -19,23 +19,24 @@ class PostFormView(FormView):
     form_class = PostForm
     success_url = "/success/"  # Adjust the success URL as needed
 
-    def form_valid(self, form):
-        title = form.cleaned_data['title']
-        body = form.cleaned_data['body']
-        author_name = form.cleaned_data['author']
-        author, created = User.objects.get_or_create(username=author_name)
-        main_image = form.cleaned_data['main_image']
-        images = form.cleaned_data['images']
+def form_valid(self, form):
+    title = form.cleaned_data['title']
+    body = form.cleaned_data['body']
+    author_name = form.cleaned_data['author']
+    main_image = form.cleaned_data['main_image']
+    images = form.cleaned_data['images']
+    author = User.objects.get(username=author_name)
 
-        post = Post.objects.create(title=title, body=body, status=Post.Status.PUBLISHED, author=author)
+    post = Post.objects.create(title=title, body=body, status=Post.Status.PUBLISHED, author=author)
 
-        if main_image:
-            Image.objects.create(post=post, image=main_image)
-        for image in images:
-            if image != main_image:
-                Image.objects.create(post=post, image=image)
+    if main_image:
+        Image.objects.create(post=post, image=main_image)
+    for image in images:
+        if image != main_image:
+            Image.objects.create(post=post, image=image)
 
-        return super().form_valid(form)
+    return super().form_valid(form)
+
 
 
 def home(request):
