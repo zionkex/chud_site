@@ -1,36 +1,42 @@
+{#{% extends "blog/base/base.html" %}#}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Новый пост</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Новий пост</title>
 </head>
 <body>
-  <h2>Створити пост</h2>
-  <form method="post" enctype="multipart/form-data">
+<div class="main">
+  <form class="form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    <div class="form-header"><h2>Створити пост</h2></div>
+    <div class="form-field">
+      {{ form.title.errors }}
+        {{ form.title }}</div>
+
+        <div class="form-field">
+        {{ form.author.errors }}
+            {{ form.author }}</div>
+
+    <div class="form-field">
+    {{ form.body.errors }}
+        {{ form.body }}</div>
     
-    <p>{{ form.title.errors }}
-    <label for="{{ form.title.id_for_label }}">Заголовок:</label>
-    {{ form.title }}</p>
-      <p>{{ form.author.errors }}
-    <label for="{{ form.author.id_for_label }}">Автор:</label>
-    {{ form.author }}</p>
-      
-      
-    <p>{{ form.body.errors }}
-    <label for="{{ form.body.id_for_label }}">Текст:</label>
-    {{ form.body }}</p>
+    <div class="form-image">
+        {{ form.main_image.errors }}
+    <label for="{{ form.main_image.id_for_label }}" >Основне зображення:</label>
+        {{ form.main_image }}</div>
     
-    <p>{{ form.main_image.errors }}
-    <label for="{{ form.main_image.id_for_label }}">Основне зображення:</label>
-    {{ form.main_image }}</p>
-    
-    <p>{{ form.images.errors }}
+    <div class="form-image als">{{ form.images.errors }}
     <label for="{{ form.images.id_for_label }}">Зображення:</label>
-    {{ form.images }}</p>
+    {{ form.images }}</div>
     
     <button type="submit">Відправити</button>
   </form>
+    </div>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
