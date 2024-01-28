@@ -439,8 +439,6 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
-    opacity: 0.4;
-
 }
 textarea {
     margin-top: 20px;
