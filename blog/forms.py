@@ -1,5 +1,5 @@
 from django import forms
-from .models import Fileupload, Post
+from .models import Fileupload
 
 
 class MultipleFileInput(forms.ClearableFileInput):
@@ -21,9 +21,9 @@ class MultipleFileField(forms.FileField):
 
 
 class PostForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    body = forms.CharField(widget=forms.Textarea)
-    author = forms.CharField(max_length=50)
+    title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Назва поста '}))
+    body = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Тіло поста"}))
+    author = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Автор поста '}))
     main_image = forms.ImageField(required=False)
     images = MultipleFileField(required=False)
 
