@@ -15,7 +15,7 @@ def menu(request):
 
 
 class PostFormView(FormView):
-    template_name = "post_form.html"
+    template_name = "blog/post/post_form.html"
     form_class = PostForm
     success_url = "/success/"  # Adjust the success URL as needed
 
@@ -37,13 +37,6 @@ def form_valid(self, form):
 
     return super().form_valid(form)
 
-
-
-def home(request):
-    posts = Post.objects.all()
-    return render(request, 'home.html', {'posts': posts})
-
-
 def post_list(request):
     posts = Post.published.all()
     options = Menu.objects.all()
@@ -51,7 +44,11 @@ def post_list(request):
     context = {"options": options, 'posts': posts}
     return render(request, 'blog/posts.html', context)
 
-
+def post_detail(request,slug):
+    post = get_object_or_404(Post, slug=slug,status=Post.Status.PUBLISHED)
+    return render(request,
+                  'blog/post/detail.html',
+                  {'post': post})
 def upload_file(request):
     if request.method == 'POST':
         form = FileuploadForm(request.POST, request.FILES)

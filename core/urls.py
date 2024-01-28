@@ -25,7 +25,6 @@ urlpatterns = [
     path('', views.menu, name='first'),
     path('posts/', views.post_list),
     path('create_post/', views.PostFormView.as_view(), name='create_post'),
-    path('home/', views.home ),
     path('upload/', views.upload_file),
     path ('files/<slug:slug>/', views.open_pdf, name='view_pdf'),
 ]
