@@ -55,7 +55,7 @@ body.dark {
 }
 
 .sidebar {
-    width: 280px;
+    width: 320px;
     padding: 10px 14px;
     background-color: transparent;
     transition: var(--tran-05);
@@ -227,6 +227,7 @@ body.dark .sidebar li a:hover .text {
 }
 
 .sidebar .menu-bar {
+    padding-top: 20px;
     height: calc(100% - 55px);
     display: flex;
     flex-direction: column;

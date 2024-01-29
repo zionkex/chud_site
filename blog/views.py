@@ -41,16 +41,16 @@ class PostFormView(FormView):
 def post_list(request):
     posts = Post.published.all()
     options = Menu.objects.all()
-
     context = {"options": options, 'posts': posts}
     return render(request, 'blog/post/posts.html', context)
 
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, status=Post.Status.PUBLISHED)
+    options = Menu.objects.all()
     return render(request,
                   'blog/post/detail.html',
-                  {'post': post})
+                  {'post': post, 'options': options})
 
 
 def upload_file(request):
