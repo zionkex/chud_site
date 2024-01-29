@@ -37,6 +37,7 @@ class PostFormView(FormView):
 
         return super().form_valid(form)
 
+
 def post_list(request):
     posts = Post.published.all()
     options = Menu.objects.all()
@@ -44,11 +45,13 @@ def post_list(request):
     context = {"options": options, 'posts': posts}
     return render(request, 'blog/post/posts.html', context)
 
+
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, status=Post.Status.PUBLISHED)
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
+
 
 def upload_file(request):
     if request.method == 'POST':
