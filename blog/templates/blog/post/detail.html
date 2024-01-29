@@ -1,15 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    
-        <h1>{{ post.title }}</h1>
-  <p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-  </p>
-  {{ post.body|linebreaks }}
-</body>
-</html>
+{% extends "blog/base/base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+    .post-content {
+        display: block;
+        padding-bottom: 50px;
+    }
+    .publish {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+    .post-title {
+        text-align: center;
+    }
+    .post-body {
+        padding: 20px;
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    </style>
+    <div class="post-content">
+    <div class="post-title">
+        <h1>{{ post.title }}</h1></div>
+        <div class="publish"> Опубліковано {{ post.author }} о {{ post.publish }}</div>
+        <div class="post-body">
+        {{ post.body|linebreaks}}
+    </div>
+    </div>
+{% endblock %}
