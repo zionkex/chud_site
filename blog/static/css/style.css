@@ -384,6 +384,9 @@ body.dark .head .text h2 {
     font-size: 18px;
     line-height: 1.5;
 }
+.post-text a {
+    text-decoration: none;
+}
 /* @media (max-width: 768px) {
 Add styles for the form */
 .main {
