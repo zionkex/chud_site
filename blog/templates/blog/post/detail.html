@@ -25,7 +25,7 @@
         <h1>{{ post.title }}</h1></div>
         <div class="publish"> Опубліковано {{ post.author }} о {{ post.publish }}</div>
         <div class="post-body">
-        {{ post.body|linebreaks}}
+        {{ post.body|linebreaksbr}}
     </div>
     </div>
 {% endblock %}
