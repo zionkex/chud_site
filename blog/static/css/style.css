@@ -411,8 +411,8 @@ form {
     padding-bottom: 30px;
     margin-bottom: 10px;
 }
-textarea,
-input[type="text"] {
+form textarea,
+form input[type="text"] {
   width: 80%;
   padding: 10px;
     margin-top: 20px;
@@ -422,7 +422,7 @@ input[type="text"] {
     border-style: none;
 }
 
-input[type="file"] {
+form input[type="file"] {
     margin-top: 20px;
     width: 60%;
   padding: 10px;
@@ -431,11 +431,11 @@ input[type="file"] {
   font-size: 18px;
     color: #0f0f0f;
 }
-label {
+form label {
     font-size:18px;
     color: #0f0f0f;
 }
-button {
+form button {
     background-color: #4caf50;
     color: white;
     padding: 10px 15px;
@@ -444,21 +444,22 @@ button {
     cursor: pointer;
     font-size: 20px;
 }
-textarea {
+form textarea {
     margin-top: 20px;
     background-color: white;
     height: 150px;
     font-size: 16px;
 }
-input::placeholder,
-textarea::placeholder {
+
+form input::placeholder,
+form textarea::placeholder {
   font-size: 100%;
 }
 
 .form-image {
   text-align: center;
 }
-body.dark .form-header {
+body.dark form .form-header {
     background-color: #695cfe;
     margin: -20px -20px 0 -20px;
     border-radius: 20px 20px 0 0;
@@ -466,23 +467,23 @@ body.dark .form-header {
     color: white;
 }
 
-body.dark label{
+body.dark form label{
     color: white;
 }
-body.dark button {
+body.dark form button {
     background-color: #695cfe;
 }
-body.dark input[type="file"] {
+body.dark form input[type="file"] {
     color: white;
 }
-body.dark .als{
+body.dark form.als{
     padding-left: 40px;
 }
-body.dark input[type="text"], body.dark textarea{
+body.dark form input[type="text"], body.dark textarea{
     background-color: #282626;
     color: white;
 }
-body.dark input::placeholder,
-body.dark textarea::placeholder{
+body.dark form input::placeholder,
+body.dark form textarea::placeholder{
     color: white;
 }
