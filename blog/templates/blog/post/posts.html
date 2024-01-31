@@ -14,7 +14,7 @@
             <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
         </h2>
         <p>Published on: {{ post.publish }}</p>
-        <p>{{ post.body|truncate_at_last_dot:30 }}</p>
+        <p>{{ post.body|truncate_at_last_dot:40 }}</p>
       </div>
     </div>
   {% endfor %}
