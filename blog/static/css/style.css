@@ -14,6 +14,7 @@
 }
 
 body {
+    width: 100%;
     min-height: 100vh;
     background-image: linear-gradient(to right, #EA8D8D, #A890FE);
     transition: background-color var(--tran-05);
@@ -67,7 +68,7 @@ body.dark {
 }
 
 .main-content {
-    width: 100%;
+    width: calc(100% - 260px);
     transition: var(--tran-05);
     margin-top: 10px;
 }
