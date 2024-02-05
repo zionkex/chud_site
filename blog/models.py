@@ -63,6 +63,19 @@ class Image(models.Model):
         return f"Image for {self.post.title}"
 
 
+
+class MenuContent (models.Model):
+    menu_title = models.ForeignKey (Menu, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    icon = models.CharField(max_length=50)
+    priority = models.IntegerField(default=0)
+    # slug=models.SlugField(max_length=50)
+    
+    def __init__(self):
+        return self.title
+
+
+
 class Fileupload(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=250)
