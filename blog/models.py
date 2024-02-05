@@ -7,8 +7,13 @@ from unidecode import unidecode
 
 class Menu(models.Model):
     title = models.CharField(max_length=20)
+    slug = models.CharField(max_length = 20, default=False, blank=True, null=True,)
     icon = models.CharField(max_length=50)
     priority = models.IntegerField(default=0)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unidecode(self.title))
+        return super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['priority']

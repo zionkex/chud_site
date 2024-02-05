@@ -3,7 +3,8 @@ from .models import Menu, Post, Image, Fileupload
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ['title', 'icon', 'priority']
+    list_display = ['title','slug', 'icon', 'priority']
+    prepopulated_fields = {'slug': ('title',)}
 
 class ImageInline(admin.TabularInline):
     model = Image
