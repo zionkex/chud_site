@@ -68,7 +68,7 @@ body.dark {
 }
 
 .main-content {
-    width: calc(100% - 260px);
+    width: calc(100% - 300px);
     transition: var(--tran-05);
     margin-top: 10px;
 }
@@ -203,6 +203,7 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar li a {
+    padding-right: 10px;
     list-style: none;
     height: 100%;
     background-color: transparent;
