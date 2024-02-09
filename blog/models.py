@@ -7,9 +7,13 @@ from unidecode import unidecode
 
 class Menu(models.Model):
     title = models.CharField(max_length=20)
-    slug = models.CharField(max_length = 20, default=False, blank=True, null=True,)
+    slug = models.CharField(max_length=20, default=False, blank=True, null=True, )
     icon = models.CharField(max_length=50)
     priority = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(unidecode(self.title))
@@ -22,10 +26,23 @@ class Menu(models.Model):
         ]
 
 
+class MenuContent(models.Model):
+    menu_title = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50)
+    icon = models.CharField(max_length=50)
+    priority = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset() \
             .filter(status=Post.Status.PUBLISHED)
+
+
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
@@ -34,7 +51,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=250, blank=True, null=True, unique_for_date='publish')
     publish = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.PROTECT,default=None)
+    author = models.ForeignKey(User, on_delete=models.PROTECT, default=None)
     body = models.TextField()
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
     objects = models.Manager()
@@ -61,19 +78,6 @@ class Image(models.Model):
 
     def __str__(self):
         return f"Image for {self.post.title}"
-
-
-
-class MenuContent (models.Model):
-    menu_title = models.ForeignKey (Menu, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    icon = models.CharField(max_length=50)
-    priority = models.IntegerField(default=0)
-    # slug=models.SlugField(max_length=50)
-    
-    def __init__(self):
-        return self.title
-
 
 
 class Fileupload(models.Model):
