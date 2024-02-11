@@ -29,12 +29,16 @@ class Menu(models.Model):
 class MenuContent(models.Model):
     menu_title = models.ForeignKey(Menu, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50,null=True, blank=True)
     icon = models.CharField(max_length=50)
     priority = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unidecode(self.title))
+        return super().save(*args, **kwargs)
 
 
 class PublishedManager(models.Manager):
