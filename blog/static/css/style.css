@@ -53,6 +53,8 @@ body.dark {
 /* ===== Sidebar ===== */
 .container {
     display: flex;
+    position: relative;
+
 }
 
 .sidebar {
@@ -63,7 +65,7 @@ body.dark {
     /* position: absolute; */
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     height: 100%;
 }
 
@@ -71,10 +73,12 @@ body.dark {
     width: calc(100% - 300px);
     transition: var(--tran-05);
     margin-top: 10px;
+    flex-grow: 1;
 }
 
 .sidebar.close {
     width: 85px;
+    z-index: 99;
 }
 
 .sidebar li {
@@ -340,13 +344,12 @@ body.dark .head .text h2 {
 
 .sidebar.close .nav-link .text.nav-text {
     position: fixed;
-    
-    left: 10%;
+    left: 5%;
     color: #000000;
     padding: 5px;
     border-radius: 3px;
-    z-index: 999;
-    opacity: 0;
+    z-index: 1;
+    display:none;
 }
 
 .sidebar.close .nav-link:hover .text.nav-text {
