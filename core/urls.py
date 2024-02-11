@@ -19,10 +19,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from blog import views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.menu, name='first'),
+    path('', views.menu, name='menu'),
     path('posts/', views.post_list),
+    path('<slug:menu_slug>/', views.menu_detail, name='menu_detail'),
     path('create_post/', views.PostFormView.as_view(), name='create_post'),
     path('post/<slug:slug>/', views.post_detail, name='post_detail'),
     path('upload/', views.upload_file),

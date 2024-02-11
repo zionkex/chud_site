@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from .models import Post, Image, Menu, Fileupload
+from .models import Post, Image, Menu, Fileupload, MenuContent
 from django.views.generic.edit import FormView
 from .forms import PostForm, FileuploadForm
 from django.core.files.storage import FileSystemStorage
@@ -14,10 +14,19 @@ def menu(request):
     return render(request, 'blog/base/base.html', {"options": options})
 
 
+def menu_detail(request, menu_slug):
+    menu_contents = MenuContent.objects.filter(menu_title__slug=menu_slug)
+    options = Menu.objects.all()
+    context= {'menu_contents': menu_contents, 'options': options}
+    # menuc = Menu.objects.get(slug=menu_slug)
+    # menu_contents = menuc.menucontent_set.all()
+    return render(request, 'blog/menu_detail.html', context)
+
+
 class PostFormView(FormView):
     template_name = "post_form.html"
     form_class = PostForm
-    success_url = "/success/"  # Adjust the success URL as needed
+    success_url = "/success/"
 
     def form_valid(self, form):
         title = form.cleaned_data['title']
