@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.utils.encoding import escape_uri_path
 from unidecode import unidecode
 
 from .models import Post, Image, Menu, Fileupload, MenuContent, Menuinfo
@@ -31,19 +32,14 @@ def menu_detail(request, menu_slug):
 def menu_info(request, menu_slug, slug):
     options = Menu.objects.all()
     info = get_object_or_404(Menuinfo, content_title__slug=slug)
-    name = info.file.name.split('/')[-1]
+    name = info.name
     if info.file:
         storage = FileSystemStorage()
         pdf_path = storage.path(info.file.name)
-        with open(pdf_path, 'rb') as file:
-            my_data = file.read()
-        response = HttpResponse(
-            my_data,
-            content_type='application/pdf',
-            headers={
-                "Content-Disposition": f'filename="{(unidecode(name))}"',
-            }
-        )
+        response = FileResponse(open(pdf_path, 'rb'))
+        filename = info.file.name.split('/')[-1]
+        response["Content-Disposition"] = f'filename="{escape_uri_path(filename)}"'
+
         return response
     else:
         context = {'info': info, 'options': options, 'filename': (name)}
