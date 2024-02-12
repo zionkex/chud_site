@@ -26,10 +26,11 @@ urlpatterns = [
     path('', views.menu, name='menu'),
     path('posts/', views.post_list),
     path('<slug:menu_slug>/', views.menu_detail, name='menu_detail'),
+    path('<slug:menu_slug>/<slug:slug>', views.menu_info, name='menu_info'),
     path('create_post/', views.PostFormView.as_view(), name='create_post'),
     path('post/<slug:slug>/', views.post_detail, name='post_detail'),
     path('upload/', views.upload_file),
-    path ('files/<slug:slug>/', views.open_pdf, name='view_pdf'),
+    # path ('files/<slug:slug>/', views.open_pdf, name='view_pdf'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

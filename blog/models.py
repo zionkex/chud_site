@@ -46,16 +46,16 @@ class Menuinfo(models.Model):
     content_title = models.ForeignKey(MenuContent, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, null=True, blank=True)
-    body = models.TextField()
-    image = models.ImageField(upload_to='category_images/')
-    file = models.FileField(upload_to='menu_documents/')
+    body = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='category_images/',null=True, blank=True)
+    file = models.FileField(upload_to='menu_documents/',null=True, blank=True,max_length=100)
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(unidecode(self.name))
         super().save(*args, **kwargs)
 
 

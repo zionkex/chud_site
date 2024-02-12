@@ -1,41 +1,43 @@
 {% extends "blog/base/base.html" %}
 {% load static %}
 {% block head %}
-<style>
-    .main-content {
-        background-color: white;
-        padding: 20px;
-        text-align: center;
-    }
-    .menu_content {
-    padding: 20px;
-    -webkit-column-gap: 2rem;
-    -moz-column-gap: 2rem;
-    column-gap: 2rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    }
+    <style>
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-    .menu_content>.category {
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 33%;
-        flex: 0 0 33%;
-        justify-content: center;
-        max-width: calc(33.33333% - 1.33333rem);
-        width: 100%
-    }
-    .category{
-        font-size: 20px;
-        border-color: #0f0f0f;
-        border-style: solid;
-        padding: 2rem;
-        margin-top: 20px;
-    }
+        .menu_content {
+            padding: 20px;
+            -webkit-column-gap: 2rem;
+            -moz-column-gap: 2rem;
+            column-gap: 2rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .menu_content > .category {
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 33%;
+            flex: 0 0 33%;
+            justify-content: center;
+            max-width: calc(33.33333% - 1.33333rem);
+            width: 100%
+        }
+
+        .category {
+            font-size: 20px;
+            border-color: #0f0f0f;
+            border-style: solid;
+            padding: 2rem;
+            margin-top: 20px;
+        }
     </style>
 {% endblock %}
 {% block content %}
@@ -44,9 +46,8 @@
         {% for menu_item in menu_contents %}
             <div class="category">
                 <i class="bi bi-file-earmark-text"></i>
-                <a href="">{{menu_item.title}}
-                    </a>
-                </div>
+                <a href="{{ menu_item.url }}">{{ menu_item.title }}</a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
