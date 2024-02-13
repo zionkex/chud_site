@@ -9,6 +9,7 @@ from .forms import PostForm, FileuploadForm
 from django.core.files.storage import FileSystemStorage
 from django.http import FileResponse
 from django.urls import reverse
+from django.http import Http404
 
 
 # Create your views here.
@@ -20,6 +21,8 @@ def menu(request):
 
 def menu_detail(request, menu_slug):
     menu_contents = MenuContent.objects.filter(menu_title__slug=menu_slug)
+    if not menu_contents:
+        raise Http404("No menu content found")
     options = Menu.objects.all()
     context = {'menu_contents': menu_contents, 'options': options}
     for menu_item in menu_contents:
@@ -33,7 +36,7 @@ def menu_info(request, menu_slug, slug):
     options = Menu.objects.all()
     info = get_object_or_404(Menuinfo, content_title__slug=slug)
     name = info.name
-    if info.file:
+    if not info.body:
         storage = FileSystemStorage()
         pdf_path = storage.path(info.file.name)
         response = FileResponse(open(pdf_path, 'rb'))
