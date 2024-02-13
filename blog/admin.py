@@ -15,7 +15,7 @@ class MenuContentAdmin(admin.ModelAdmin):
 
 @admin.register(Menuinfo)
 class MenuinfoAdmin(admin.ModelAdmin):
-    list_display = ['content_title','name', 'slug', 'body']
+    list_display = ['menu_title','content_title','name', 'slug', 'body']
     prepopulated_fields = {'slug': ('name',)}
 
 

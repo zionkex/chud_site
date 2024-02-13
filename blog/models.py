@@ -43,7 +43,8 @@ class MenuContent(models.Model):
 
 
 class Menuinfo(models.Model):
-    content_title = models.ForeignKey(MenuContent, on_delete=models.CASCADE)
+    menu_title = models.ForeignKey(Menu, on_delete=models.CASCADE,default=1)
+    content_title = models.CharField(max_length=50, null=True, blank=True)
     name = models.CharField(max_length=50, null=True, blank=True)
     slug = models.SlugField(max_length=50, null=True, blank=True)
     body = models.TextField(null=True, blank=True)
