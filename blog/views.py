@@ -20,7 +20,7 @@ def menu(request):
 
 
 def menu_detail(request, menu_slug):
-    menu_contents = Menuinfo.objects.filter(menu_title__slug=menu_slug)
+    menu_contents = Menuinfo.objects.filter(menu_title__slug=menu_slug).order_by('priority')
     if not menu_contents:
         raise Http404("No menu content found")
 

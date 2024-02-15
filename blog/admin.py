@@ -9,7 +9,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 @admin.register(Menuinfo)
 class MenuinfoAdmin(admin.ModelAdmin):
-    list_display = ['menu_title','content_title', 'slug', 'body']
+    list_display = ['menu_title','content_title', 'slug', 'body', 'priority']
     prepopulated_fields = {'slug': ('content_title',)}
 
 

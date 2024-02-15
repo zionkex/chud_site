@@ -32,7 +32,13 @@ class Menuinfo(models.Model):
     body = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='category_images/',null=True, blank=True)
     file = models.FileField(upload_to='menu_documents/',null=True, blank=True,max_length=100)
+    priority = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['menu_title']
+        indexes = [
+            models.Index(fields=['menu_title']),
+        ]
     def __str__(self):
         return self.content_title
 
