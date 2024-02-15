@@ -51,11 +51,11 @@ class Menuinfo(models.Model):
     file = models.FileField(upload_to='menu_documents/',null=True, blank=True,max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.content_title
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(unidecode(self.name))
+            self.slug = slugify(unidecode(self.content_title))
         super().save(*args, **kwargs)
 
 
