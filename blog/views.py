@@ -37,7 +37,6 @@ def menu_info(request, menu_slug, slug):
     options = Menu.objects.all()
     info = get_object_or_404(Menuinfo, slug=slug)
     # infos = Menuinfo.objects.filter(content_title__slug=slug)
-    name = info.name
     if not info.body:
         return redirect(info.file.url)
     else:
