@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.utils.encoding import escape_uri_path
 from unidecode import unidecode
 
-from .models import Post, Image, Menu, Fileupload, MenuContent, Menuinfo
+from .models import Post, Image, Menu, Fileupload,Menuinfo
 from django.views.generic.edit import FormView
 from .forms import PostForm, FileuploadForm
 from django.core.files.storage import FileSystemStorage

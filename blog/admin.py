@@ -1,17 +1,11 @@
 from django.contrib import admin
-from .models import Menu, Post, Image, Fileupload, MenuContent, Menuinfo
+from .models import Menu, Post, Image, Fileupload, Menuinfo
 
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'icon', 'priority']
     prepopulated_fields = {'slug': ('title',)}
-
-
-@admin.register(MenuContent)
-class MenuContentAdmin(admin.ModelAdmin):
-    list_display = ['menu_title', 'title', 'slug', 'icon', 'priority']
-
 
 @admin.register(Menuinfo)
 class MenuinfoAdmin(admin.ModelAdmin):
