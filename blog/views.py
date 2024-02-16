@@ -24,23 +24,31 @@ def menu_detail(request, menu_slug):
     if not menu_contents:
         raise Http404("No menu content found")
 
-    options = Menu.objects.all()
-    context = {'menu_contents': menu_contents, 'options': options}
+    unique_slugs = set()
+    unique_menu_contents = []
 
     for menu_item in menu_contents:
+        if menu_item.slug not in unique_slugs: 
+            unique_slugs.add(menu_item.slug)  
+
+    options = Menu.objects.all()
+    context = {'menu_contents': unique_menu_contents, 'options': options}
+
+    for menu_item in unique_menu_contents:
         menu_item.url = reverse('menu_info', kwargs={'menu_slug': menu_slug, 'slug': menu_item.slug})
 
     return render(request, 'blog/menu_detail.html', context)
 
 
+
 def menu_info(request, menu_slug, slug):
     options = Menu.objects.all()
-    info = get_object_or_404(Menuinfo, slug=slug)
-    # infos = Menuinfo.objects.filter(content_title__slug=slug)
-    if not info.body:
-        return redirect(info.file.url)
-    else:
-        context = {'info': info, 'options': options}
+    infos = Menuinfo.objects.filter(slug=slug)
+    for info in infos:
+        if not info.body:
+            return redirect(info.file.url)
+        else:
+            context = {'infos': infos, 'options': options}
         return render(request, 'blog/menu_information.html', context)
 
 
