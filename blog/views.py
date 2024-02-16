@@ -25,11 +25,12 @@ def menu_detail(request, menu_slug):
         raise Http404("No menu content found")
 
     unique_slugs = set()
-    unique_menu_contents = []
+    unique_menu_contents = []  
 
     for menu_item in menu_contents:
-        if menu_item.slug not in unique_slugs: 
-            unique_slugs.add(menu_item.slug)  
+        if menu_item.slug not in unique_slugs:
+            unique_slugs.add(menu_item.slug)
+            unique_menu_contents.append(menu_item)
 
     options = Menu.objects.all()
     context = {'menu_contents': unique_menu_contents, 'options': options}
