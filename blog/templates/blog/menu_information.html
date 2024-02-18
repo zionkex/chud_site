@@ -3,66 +3,117 @@
 {% block head %}
     <title>{{infos.0.content_title}}</title>
     <style>
-    * {
-        margin: 0;
-        padding: 0;
+    .main-content {
+        padding: 0 80px 40px 50px;
         box-sizing: border-box;
-        font-family: "Open Sans", sans-serif;
+        text-align: center;
+        line-height: 1.5;
+        font-size: 18px;
     }
-    
-    .main-content a {
-        position: relative;
-        display: inline-block;
-        padding: 15px 30px;
-        border: 2px solid #111;
-        text-transform: uppercase;
+    body.dark .main-content {
+        color:#fff;
+    }
+    .content-title {
+        padding-bottom: 40px;
+    }
+    .content {
+        padding: 10px 20%;
+    }
+    .content a {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 0 15px;
+    text-transform: uppercase;
+    color:#111;
+    letter-spacing: 2px ;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    overflow: hidden;
+}
+    body.dark .content a{
+        color: #21ebff;
+    }
+    .content a:nth-child(1)
+    {
+        filter: hue-rotate(115deg);
+    }
+    .content a:nth-child(3)
+    {
+        filter:hue-rotate(270deg)
+    }
+    .content a:hover {
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+    body.dark .content a:hover {
+        background: #21ebff;
         color:#111;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 20px;
-    }
-    .main-content a:before {
-        content: '';
-        position: absolute;
-        top: 6px;
-        left:-2px;
-        width: calc(100% + 4px);
-        height: calc(100% - 12px);
-        background: #fff;
-        transition: 0.5s ease-in-out;
-        transform: scaleY(1);
+        box-shadow: 0 0 50px #21ebff;
         transition-delay: 0.5s;
     }
-    .main-content a:hover::before {
-        transform: scaleY(0);
-    }
-    .main-content a:after {
+
+    .content a:before {
         content: '';
         position: absolute;
-        left: 6px;
-        top:-2px;
-        height: calc(100% + 4px);
-        width: calc(100% - 12px);
-        background: #fff;
-        transition: 0.5s ease-in-out;
-        transform: scaleX(1);
+        top: 0px;
+        left: 0px;
+        width: 10px;
+        height: 10px;
+        transition: 0.5s;
+        border-top: 2px solid #000000;
+        border-left: 2px solid #000000;
     }
-    .main-content a:hover:after {
-        transform: scaleX(0);
+    body.dark .content a:before {
+        border-top: 2px solid #21ebff;
+        border-left: 2px solid #21ebff;
     }
-    
-    .main-content   a span {
+    .content a:hover:before {
+        width: 100%;
+        height: 100%;
+
+    }
+    .content a:after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        width: 10px;
+        height: 10px;
+        transition: 0.5s;
+        border-bottom: 2px solid #000000;
+        border-right: 2px solid #000000;
+    }
+
+    .content a:hover:after {
+        width: 100%;
+        height: 100%;
+
+    }
+    body.dark .content a:after {
+        border-bottom: 2px solid #21ebff;
+        border-right: 2px solid #21ebff;
+    }
+    .content a span {
         position: relative;
         z-index: 3;
-    }</style>
+    }
+    </style>
 {% endblock%}
 {% block content%}
+    <div class="content-title">
+        <h1>{{ infos.0.content_title }}</h1>
+    </div>
     {% for info in infos %}
-        {%  if info.body %}
-        <h2>{{ info.body }}<h2>
+    <div class="content">
+        {% if info.body %}
+            {{ info.body }}
         {% endif %}
+        <br>
         {% if info.file %}
-        <a href="{{ info.file.url }}" target="_blank"><span>Переглянути PDF</span></a>
+            <a href="{{ info.file.url }}" target="_blank"><span>Переглянути</span></a>
         {% endif %}
-    {% endfor %}
+    </div>
+{% endfor %}
+
 {% endblock%}
