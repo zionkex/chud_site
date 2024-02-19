@@ -34,7 +34,6 @@ def menu_detail(request, menu_slug):
 
     options = Menu.objects.all()
     context = {'menu_contents': unique_menu_contents, 'options': options}
-
     for menu_item in unique_menu_contents:
         menu_item.url = reverse('menu_info', kwargs={'menu_slug': menu_slug, 'slug': menu_item.slug})
 
@@ -45,12 +44,8 @@ def menu_detail(request, menu_slug):
 def menu_info(request, menu_slug, slug):
     options = Menu.objects.all()
     infos = Menuinfo.objects.filter(slug=slug)
-    for info in infos:
-        if not info.body:
-            return redirect(info.file.url)
-        else:
-            context = {'infos': infos, 'options': options}
-        return render(request, 'blog/menu_information.html', context)
+    context = {'infos': infos, 'options': options}
+    return render(request, 'blog/menu_information.html', context)
 
 
 class PostFormView(FormView):
