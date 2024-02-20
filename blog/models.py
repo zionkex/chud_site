@@ -28,7 +28,7 @@ class Menu(models.Model):
 class Menuinfo(models.Model):
     menu_title = models.ForeignKey(Menu, on_delete=models.CASCADE,default=1)
     content_title = models.CharField(max_length=250, null=True, blank=True)
-    slug = models.SlugField(max_length=50, null=True, blank=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True)
     body = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='category_images/',null=True, blank=True)
     file = models.FileField(upload_to='menu_documents/',null=True, blank=True,max_length=100)

@@ -9,9 +9,12 @@ class MenuAdmin(admin.ModelAdmin):
 
 @admin.register(Menuinfo)
 class MenuinfoAdmin(admin.ModelAdmin):
-    list_display = ['menu_title','content_title', 'slug', 'body', 'priority']
+    list_display = ['menu_title', 'content_title', 'slug', 'short_body', 'priority']
     prepopulated_fields = {'slug': ('content_title',)}
 
+    def short_body(self, obj):
+        return obj.body[:150] + '...' if len(obj.body) > 50 else obj.body
+    short_body.short_description = 'Body'
 
 class ImageInline(admin.TabularInline):
     model = Image
