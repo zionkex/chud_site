@@ -1,6 +1,9 @@
 {% extends "blog/base/base.html" %}
 {% load static %}
 {% load custom_filters %}
+{% block head %}
+    <title>Новини ліцею</title>
+{% endblock %}
 {% block content %}
     
     {% for post in posts %}
