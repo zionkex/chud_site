@@ -316,7 +316,7 @@ body.dark .switch::before {
 }
 .home .text {
     text-align: center;
-    font-size: 30px;
+    font-size: calc(14px + 16 * (100vw / 1280));
     font-weight: 500;
     color: black;
     width: 100%;

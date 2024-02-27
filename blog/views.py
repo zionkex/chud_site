@@ -51,7 +51,7 @@ def menu_info(request, menu_slug, slug):
 class PostFormView(FormView):
     template_name = "post_form.html"
     form_class = PostForm
-    success_url = "/success/"
+    success_url = "/posts/"
 
     def form_valid(self, form):
         title = form.cleaned_data['title']
