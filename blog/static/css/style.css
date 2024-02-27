@@ -399,8 +399,6 @@ body.dark .post-content a {
 .post-text a {
     text-decoration: none;
 }
-/* @media (max-width: 768px) {
-Add styles for the form */
 .main {
   display: flex;
   align-items: center;
@@ -497,4 +495,17 @@ body.dark form input[type="text"], body.dark textarea{
 body.dark form input::placeholder,
 body.dark form textarea::placeholder{
     color: white;
+}
+
+@media (max-width: 576px) {
+    .post-body{
+        display: none;
+    }
+    .post-content {
+        display: block;
+    }
+    .container {
+        display: block;
+    }
+    
 }
