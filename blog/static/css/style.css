@@ -257,6 +257,7 @@ body.dark .sidebar li a:hover .text {
 
 .mode .sun-moon i {
     position: absolute;
+    bottom: 1%;
 }
 
 .mode .sun-moon i.sun {
@@ -307,21 +308,17 @@ body.dark .switch::before {
     left: 20px;
 }
 
-.sidebar.close .mode .mode-text {
+.sidebar.close .mode-text {
     display: none;
 }
-.home {
-    height: 4em;
-    width: 100%;
-}
-.home .text {
+.head .text {
     text-align: center;
     font-size: calc(14px + 16 * (100vw / 1280));
     font-weight: 500;
     color: black;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .head {
