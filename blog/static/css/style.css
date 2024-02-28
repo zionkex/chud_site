@@ -34,16 +34,6 @@ body.dark {
     ; /* Change body background color in dark mode */
 }
 
-.progress__line {
-    display: none;
-    height: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: red;
-    width: 0;
-    z-index: 10;
-}
 
 ::selection {
     background-color: var(--primary-color);
@@ -257,7 +247,7 @@ body.dark .sidebar li a:hover .text {
 
 .mode .sun-moon i {
     position: absolute;
-    bottom: 1%;
+    bottom: 2%;
 }
 
 .mode .sun-moon i.sun {
@@ -327,7 +317,6 @@ body.dark .switch::before {
 
 body.dark .head {
     background-color: #695cfe;
-    height: 4em;
 }
 
 body.dark .sidebar {
@@ -504,5 +493,13 @@ body.dark form textarea::placeholder{
     .container {
         display: block;
     }
-    
+    .sidebar{
+        width: 100%;
+    }
+    .sidebar header .toggle {
+        right: 10px
+    }
+    .sidebar.close header .toggle{
+        right:-25px;
+    }
 }
