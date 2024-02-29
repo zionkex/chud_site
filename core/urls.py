@@ -23,7 +23,7 @@ from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.menu, name='menu'),
+    path('', views.post_list),
     path('posts/', views.post_list),
     path('create_post/', views.PostFormView.as_view(), name='create_post'),
     path('<slug:menu_slug>/', views.menu_detail, name='menu_detail'),

@@ -7,20 +7,19 @@
 {% block content %}
     
     {% for post in posts %}
-        <div class="post-content">
+        <a href="{% url 'post_detail' post.slug %}" class="post-content">
             <div class="post-images">
                 {% if post.images.first %}
                     <img src="{{ post.images.first.image.url }}" width=100% alt="Image for {{ post.title }}">
                 {% endif %}
             </div>
             <div class="post-text">
-                <h2>
-                    <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
-                </h2>
+                <h2>{{post.title}}</h2>
                 <p class="post-publish">Published on: {{ post.publish }}</p>
-                <p class="post-body">{{ post.body|truncate_at_last_dot:40 }}</p>
+                <p class="post-body">{{ post.body|truncate_at_last_dot:30 }}</p>
             </div>
-        </div>
+        </a>
+
     {% endfor %}
 {% endblock %}  
 
