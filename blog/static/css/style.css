@@ -326,7 +326,7 @@
         color: #FFF;
     }
 
-    .sidebar.close .nav-link .text.nav-text {
+    .sidebar.close .text.nav-text {
         position: fixed;
         left: 5%;
         color: #000000;
@@ -334,11 +334,6 @@
         border-radius: 3px;
         z-index: 1;
         display:none;
-    }
-
-    .sidebar.close .nav-link:hover .text.nav-text {
-        display: block;
-        opacity: 1;
     }
 
     .dark .sidebar.close .nav-link:hover .text.nav-text {
