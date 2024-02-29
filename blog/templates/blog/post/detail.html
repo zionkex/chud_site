@@ -34,6 +34,20 @@
         .swiper-slide img {
             height: 100%;
         }
+        @media (max-width: 576px) {
+          .post-body {
+            padding: 20px;
+          }
+          .swiper {
+            width:100%;
+          }
+          .swiper-slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        }
+
         </style>
 
     {% endblock %}
@@ -47,9 +61,7 @@
             {{ post.body|linebreaksbr }}
         </div>
         <div class="swiper mySwiper">
-        <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-          <!-- Slides -->
           
           {% for image in post.images.all %}
           {%if image%}
@@ -59,8 +71,6 @@
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
-
-        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
@@ -69,28 +79,16 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cube",
-            grabCursor: true,
-            cubeEffect: {
-              shadow: true,
-              slideShadows: true,
-              shadowOffset: 20,
-              shadowScale: 0.94,
-            },
-
-
-        // If we need paginatioчn
+      var swiper = new Swiper(".mySwiper", {
+        lazy: true,
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
+          clickable: true,
         },
-
-        // Navigation arrows
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
-
-
-      });</script>
+      });
+    </script>
 {% endblock %}

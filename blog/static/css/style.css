@@ -17,7 +17,6 @@
         width: 100%;
         min-height: 100vh;
         background-image: linear-gradient(to right, #EA8D8D, #A890FE);
-        transition: background-color var(--tran-05);
         background-color: var(--body-color)
     }
 
@@ -51,8 +50,6 @@
         width: 320px;
         padding: 10px 14px;
         background-color: transparent;
-        transition: var(--tran-05);
-        /* position: absolute; */
         top: 0;
         left: 0;
         z-index: 1;
@@ -61,7 +58,6 @@
 
     .main-content {
         width: calc(100% - 300px);
-        transition: var(--tran-05);
         margin-top: 10px;
         flex-grow: 1;
     }
@@ -311,7 +307,8 @@
     }
 
     .head {
-        width: calc(100%);
+        width: 100%;
+        padding-bottom: 10px;
     }
 
     body.dark .head {
@@ -478,9 +475,9 @@
     }
 
     @media (max-width: 576px) {
-        .post-body{
+        /* .post-body{
             display: none;
-        }
+        } */
         .post-publish {
             display: none;
         }
