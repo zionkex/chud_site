@@ -31,22 +31,23 @@
             display:flex;
             justify-content: center;
             align-items: center;
+        }
         .swiper-slide img {
             height: 100%;
         }
         @media (max-width: 576px) {
           .post-body {
-            padding: 20px;
+              padding: 20px;
           }
           .swiper {
-            width:100%;
+              width: 100%;
           }
           .swiper-slide img {
-            width: 100%;
-            height: auto;
-        }
-
-        }
+              width: 100%;
+              height: auto;
+          }
+      }
+      
 
         </style>
 
@@ -55,7 +56,7 @@
 {% block content %}
     <div class="post-content">
         <div class="post-title">
-            <h1>{{ post.title }}</h1></div>
+            <h1>{{ post.title | capitalize}}</h1></div>
         <div class="publish"> Опубліковано {{ post.author }} о {{ post.publish }}</div>
         <div class="post-body">
             {{ post.body|linebreaksbr }}
