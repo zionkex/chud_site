@@ -1,6 +1,7 @@
 {% extends "blog/base/base.html" %}
 {% load static %}
     {% block head %}
+    <title>{{post.title }}</title>
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
         <style>
             .post-content {
@@ -26,11 +27,10 @@
             height: 500px;
           }
         .swiper-slide {
-            background: #ccc;
+            background: transparent;
             display:flex;
             justify-content: center;
             align-items: center;
-        }
         .swiper-slide img {
             height: 100%;
         }

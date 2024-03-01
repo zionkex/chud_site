@@ -29,10 +29,11 @@
             -webkit-box-pack: center;
             -ms-flex-pack: center;
             -webkit-box-flex: 0;
-            -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
+            -ms-flex: 0 0 33%;
+            flex: 0 0 33%;
             justify-content: center;
-            width: 100%
+            max-width: calc(33.33333% - 1.33333rem);
+            width: 100%;
         }
 
         .category {
@@ -57,6 +58,13 @@
         .category a:hover {
             opacity: 0.8;
         }
+        @media(max-width: 576px) {
+            .menu_content > .category {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: none;
+            }
+        }
     </style>
 {% endblock %}
 {% block content %}
@@ -66,6 +74,7 @@
             <div class="category">
                 <i class="bi bi-file-earmark-text"></i>
                     {%if menu_item.body%}
+
                 <a href="{{ menu_item.url }}">{{ menu_item.content_title }}</a>
                 {% else%}
                 <a href="{{ menu_item.file.url }}" target="_blank">{{ menu_item.content_title }}</a>
