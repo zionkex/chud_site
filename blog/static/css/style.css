@@ -475,7 +475,9 @@
     body.dark form textarea::placeholder{
         color: white;
     }
-
+    .post-publish {
+        padding-top: 20px;
+    }
     @media (max-width: 576px) {
         /* .post-body{
             display: none;
