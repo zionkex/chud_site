@@ -33,7 +33,11 @@
             flex: 0 0 33%;
             justify-content: center;
             max-width: calc(33.33333% - 1.33333rem);
+<<<<<<< HEAD
             width: 100%
+=======
+            width: 100%;
+>>>>>>> 37f12a46e355c0f77d056c0ddeffe7f42d7d6c41
         }
 
         .category {
@@ -51,6 +55,7 @@
         }
         body.dark .category {
             border-color: #ffffff;
+            line-height: 1.5;
         }
         body.dark .category a{
             color: #2997ff;
@@ -58,6 +63,7 @@
         .category a:hover {
             opacity: 0.8;
         }
+<<<<<<< HEAD
         @media (max-width: 576px) {
             .menu_content > .category {
                 -webkit-box-pack: center;
@@ -68,6 +74,14 @@
                 justify-content: center;
                 width: 100%
         }  
+=======
+        @media(max-width: 576px) {
+            .menu_content > .category {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: none;
+            }
+>>>>>>> 37f12a46e355c0f77d056c0ddeffe7f42d7d6c41
         }
     </style>
 {% endblock %}
@@ -78,6 +92,7 @@
             <div class="category">
                 <i class="bi bi-file-earmark-text"></i>
                     {%if menu_item.body%}
+
                 <a href="{{ menu_item.url }}">{{ menu_item.content_title }}</a>
                 {% else%}
                 <a href="{{ menu_item.file.url }}" target="_blank">{{ menu_item.content_title }}</a>

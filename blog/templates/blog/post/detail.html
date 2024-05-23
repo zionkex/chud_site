@@ -1,6 +1,7 @@
 {% extends "blog/base/base.html" %}
 {% load static %}
     {% block head %}
+    <title>{{post.title }}</title>
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
         <style>
             .post-content {
@@ -26,7 +27,7 @@
             height: 500px;
           }
         .swiper-slide {
-            background: #ccc;
+            background: transparent;
             display:flex;
             justify-content: center;
             align-items: center;
@@ -36,17 +37,17 @@
         }
         @media (max-width: 576px) {
           .post-body {
-            padding: 20px;
+              padding: 20px;
           }
           .swiper {
-            width:100%;
+              width: 100%;
           }
           .swiper-slide img {
-            width: 100%;
-            height: auto;
-        }
-
-        }
+              width: 100%;
+              height: auto;
+          }
+      }
+      
 
         </style>
 
